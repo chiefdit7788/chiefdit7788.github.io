@@ -1,0 +1,70 @@
+
+<html>
+	<head>
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+		<!--<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>-->
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0, user-scalable=0">
+	</head>
+
+	<body style="margin:0;">
+	<a id="alink" href="" style="visibility: hidden;">正在跳转请稍后</a>
+		<script>
+	
+		
+var jump;
+var url="https://s.sunyangwuzi.com/";  
+
+
+
+jump = getUrlParam('jump');
+
+var aObj = document.getElementById("alink");
+
+
+                $.post(url+"api/getluodiurl.html", {'ip':""},  //传入ip 返回code 如果=0 就跳wx红域名
+          function(data){
+         var jumpc= data.url+"?jump="+ jump;
+			top.location.href=jumpc;
+			//document.getElementById("alink").click();
+          }, "json");
+
+
+
+function getUrlParam(k) {
+    var regExp = new RegExp('([?]|&)' + k + '=([^&]*)(&|$)');
+    var result = window.location.href.match(regExp);
+    if (result) {
+        return decodeURIComponent(result[2]);
+    } else {
+        return null;
+    }
+}
+
+
+function isMobileClient() {
+    var userAgentInfo = navigator.userAgent;
+    var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+    var agentinfo = null;
+    for (var i = 0; i < Agents.length; i++) {
+        if (userAgentInfo.indexOf(Agents[i]) > 0) {
+            agentinfo = userAgentInfo;
+            break;
+        }
+    }
+    if (agentinfo) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+</script>
+
+	</body>
+
+		
+	
+</html>
